@@ -1,12 +1,12 @@
 //variables
     var userSeq =[];
     var simonSeq =[];
-    const NUM_OF_LEVELS = 8;
+    const NUM_OF_LEVELS = 20;
     var id;
     var level= 0;
     var color;
     var mode = "normal";
-    start=true;
+    var start=true;
     
     var boardSounds = [
         "https://s3.amazonaws.com/freecodecamp/simonSound1.mp3", 
@@ -21,7 +21,9 @@
         
         function simon(){
         $(".start").click(function(){
-            level++;
+            if(level ===0){
+             level++;
+            }
             startSequence();
         })
         }
@@ -39,7 +41,7 @@
   $('#onoffbtn').click(function() {
       $('.off').toggleClass('on');
       start = true;
-    //   level = 0;
+    //level = 0;
        if ($('.off').hasClass('on')) {
        $(".display").text("--");
        $('.start').removeAttr('disabled');
@@ -50,7 +52,7 @@
         simonSeq =[]; 
         start = false;
         $(".display").text("");
-        level = 0;
+        // level = 0;
         
        }
   })
@@ -151,8 +153,10 @@ function addClassSound(id,color){
  });
 //play Board Sound function
 function playSound(id){
+   
     var sound = new Audio(boardSounds[id]);
     sound.play();
+ 
 }
  
 
